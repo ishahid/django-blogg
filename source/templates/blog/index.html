@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load django_markdown %}
+
+{% block contents %}
+{% for post in posts %}
+  <div class="post">
+    <h2>{{ post.title }}</h2>
+    <p class="meta">{{ post.created }}</p>
+    {{ post.teaser|markdown }}
+    <p class="meta">
+        <a href="{{ post.get_absolute_url }}">Read the full post</a>
+    </p>
+  </div>
+{% endfor %}
+{% endblock %}
