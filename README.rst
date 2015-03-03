@@ -1,4 +1,4 @@
 django-blogg
 =====================
 
-*blogg* is a very simple Django blog app.
+*Blogg* is a very simple Django blog app.
