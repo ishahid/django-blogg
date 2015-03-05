@@ -16,7 +16,12 @@
               {% endif %}
           {% endfor %}
         </em><br>
-        Views: <em>{{ post.views }}</em>
+        <b>Views:</b> <em>{{ post.views }}</em>,&nbsp;
+        <b>Comments:</b> {{ post.comments.published.count }}<br><br>
+        {% for comment in post.comments.published %}
+          <b>{{ comment.author }}</b> - <small>{{ comment.created }}</small><br>
+          {{ comment.content }}<br><br>
+        {% endfor %}
       </small>
     </p>
   </div>

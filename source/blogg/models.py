@@ -47,3 +47,22 @@ class Post(models.Model):
     def increment_views(self):
         self.views += 1
         self.save()
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, related_name='comments')
+    content = models.TextField(max_length=1000L)
+    author = models.CharField(max_length=100, default="Anonymous", null=False, blank=True)
+    ip_address = models.GenericIPAddressField(null=True, blank=True)
+    user_agent = models.CharField(max_length=500L, null=False, blank=True)
+    published = models.BooleanField(default=True)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now_add=True, auto_now=True)
+
+    class Meta:
+        ordering = ['-created']
+
+    objects = CustomQuerySet.as_manager()
+
+    def __unicode__(self):
+        return u'%s' % self.pk
