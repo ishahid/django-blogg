@@ -15,5 +15,5 @@ def post(request, slug):
 
 def tag(request, slug):
     tag = get_object_or_404(Tag, slug=slug)
-    posts = tag.posts.filter(published=True)
+    posts = tag.posts.published()
     return render(request, 'blog/index.html', {'posts': posts})
