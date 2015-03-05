@@ -16,7 +16,7 @@ class Tag(models.Model):
         return reverse('blogg.views.tag', args=[self.slug])
 
 
-class PostQuerySet(models.QuerySet):
+class CustomQuerySet(models.QuerySet):
     def published(self):
         return self.filter(published=True)
 
@@ -36,7 +36,7 @@ class Post(models.Model):
     class Meta:
         ordering = ['-created']
 
-    objects = PostQuerySet.as_manager()
+    objects = CustomQuerySet.as_manager()
 
     def __unicode__(self):
         return u'%s' % self.title
