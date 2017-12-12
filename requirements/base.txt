@@ -1,4 +1,4 @@
-Django==1.7.5
-pytz==2014.10
+Django==2.0
+pytz==2017.3
 django-markdown==0.8.4
-django-debug-toolbar==1.2.2
+django-debug-toolbar==1.9.1
